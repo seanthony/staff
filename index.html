@@ -9,14 +9,14 @@
     <script src="https://rawgit.com/q-m/d3.chart.sankey/master/d3.chart.sankey.min.js"></script>
     <style>
       body {
-        padding: 10px;
-        min-width: 600px;
+        padding: 5px;
+        min-width: 960px;
         max-width: 1200px;
         margin: auto;
       }
       #chart {
         height: 500px;
-        font: 13px sans-serif;
+        font: 11px sans-serif;
       }
       .node rect {
         fill-opacity: .9;
@@ -38,12 +38,15 @@
 
     <script>
       var colors = {
-            'environment':         '#edbd00',
-            'social':              '#367d85',
-            'animals':             '#97ba4c',
-            'health':              '#f5662b',
-            'research_ingredient': '#3f3e47',
-            'fallback':            '#9f9fa3'
+            'unknown':             '#eb5a4e',
+            'behind':              '#f6893c',
+            'onpace':              '#65b144',
+            'default':             '#1db3e7',
+            'neutral':             '#aac9cb',
+            'magenta':             '#cd4785',
+            'orange':              '#fbb122',
+            'aqua':              '#00a19a',
+            'fallback':            '#71727a'
           };
       d3.json("product.json", function(error, json) {
         var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
