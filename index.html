@@ -1,94 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <title>Mississippi Test Dashboard</title>
+    <title>Mississippi Dashboard 2016-2017</title>
     <script src="d3.v3.min.js"></script>
     <script src="sankey.js"></script>
     <script src="d3.chart.min.js"></script>
     <script src="d3.chart.sankey.min.js"></script>
     <style>
-      body {
-        padding: 5px;
-        min-width: 800px;
-        max-width: 1280px;
-        margin: auto;
-        font-family: sans-serif;
-      }
-      #chart {
-        height: 500px;
-        font: 11px sans-serif;
-      }
-      .node rect {
-        fill-opacity: .9;
-        shape-rendering: crispEdges;
-        stroke-width: 0;
-      }
-      .node text {
-        text-shadow: 0 1px 0 #fff;
-      }
-      .link {
-        fill: none;
-        stroke: #000;
-        stroke-opacity: .2;
-      }
+        body {
+            padding: 5px;
+            min-width: 800px;
+            max-width: 1280px;
+            margin: auto;
+            font-family: sans-serif;
+        }
+
+        #chart {
+            height: 500px;
+            font: 11px sans-serif;
+        }
+
+        .node rect {
+            fill-opacity: .9;
+            shape-rendering: crispEdges;
+            stroke-width: 0;
+        }
+
+        .node text {
+            text-shadow: 0 1px 0 #fff;
+        }
+
+        .link {
+            fill: none;
+            stroke: #000;
+            stroke-opacity: .2;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <font size="3">
-      <b>Teach For America Mississippi Team Dashboard</b>
+        <b>Teach For America Mississippi Team Dashboard</b>
     </font>
     <br>
-    <font size="2">
-      <i>Last updated: 8:45 AM on 09 May 2016</i>
-    </font>
+    <!-- <font size="2">
+        <i>Last updated: 8:45 AM on 09 May 2016</i>
+    </font> -->
     <br><br>
     <div id="chart"></div>
     <font size="2">
-      <a href="https://docs.google.com/spreadsheets/d/1lNeCaUJPuzc7mVTPoVkeMomF92IMszSHdPvrvQX1my8/edit#gid=950468472">Link to Data Source</a>
+        <a href="https://docs.google.com/spreadsheets/d/11tjxj3tpt-P2ejmhk_7zK9XhnuiCjOf5eXTsg_lNwhc/edit#gid=0">Link to Data Source</a>
     </font>
+    <p>Information contained on this website may not by current, is not subject to verification, and is intended for informational purposes only.</p>
 
     <script>
-      var colors = {
-            'unknown':      '#eb5a4e',
-            'behind':       '#f6893c',
-            'onpace':       '#65b144',
-            'default':      '#1db3e7',
-            'neutral':      '#aac9cb',
-            'magenta':      '#cd4785',
-            'orange':       '#fbb122',
-            'aqua':         '#00a19a',
-            'fallback':     '#71727a'
-          };
-      d3.json("product.json", function(error, json) {
-        var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
-        chart
-          .name(label)
-          .colorNodes(function(name, node) {
-            return color(node, 1) || colors.fallback;
-          })
-          .colorLinks(function(link) {
-            return color(link.source, 4) || color(link.target, 1) || colors.fallback;
-          })
-          .nodeWidth(15)
-          .nodePadding(10)
-          .spread(true)
-          .iterations(0)
-          .draw(json);
-        function label(node) {
-          return node.name.replace(/\s*\(.*?\)$/, '');
-        }
-        function color(node, depth) {
-          var id = node.id.replace(/(_score)?(_\d+)?$/, '');
-          if (colors[id]) {
-            return colors[id];
-          } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
-            return color(node.targetLinks[0].source, depth-1);
-          } else {
-            return null;
-          }
-        }
-      });
+        var colors = {
+            'unknown': '#eb5a4e',
+            'behind': '#f6893c',
+            'onpace': '#65b144',
+            'default': '#1db3e7',
+            'neutral': '#aac9cb',
+            'magenta': '#cd4785',
+            'orange': '#fbb122',
+            'aqua': '#00a19a',
+            'fallback': '#71727a'
+        };
+        d3.json("product.json", function(error, json) {
+            var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+            chart
+                .name(label)
+                .colorNodes(function(name, node) {
+                    return color(node, 1) || colors.fallback;
+                })
+                .colorLinks(function(link) {
+                    return color(link.source, 4) || color(link.target, 1) || colors.fallback;
+                })
+                .nodeWidth(15)
+                .nodePadding(10)
+                .spread(true)
+                .iterations(0)
+                .draw(json);
+
+            function label(node) {
+                return node.name.replace(/\s*\(.*?\)$/, '');
+            }
+
+            function color(node, depth) {
+                var id = node.id.replace(/(_score)?(_\d+)?$/, '');
+                if (colors[id]) {
+                    return colors[id];
+                } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+                    return color(node.targetLinks[0].source, depth - 1);
+                } else {
+                    return null;
+                }
+            }
+        });
     </script>
-  </body>
+</body>
+
 </html>
