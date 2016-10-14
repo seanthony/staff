@@ -51,9 +51,9 @@
     <br><br>
     <div id="chart"></div>
     <font size="2">
-        <a href="https://docs.google.com/spreadsheets/d/11tjxj3tpt-P2ejmhk_7zK9XhnuiCjOf5eXTsg_lNwhc/edit#gid=0">Link to Data Source</a>
+        <a href="https://docs.google.com/spreadsheets/d/11tjxj3tpt-P2ejmhk_7zK9XhnuiCjOf5eXTsg_lNwhc/edit#gid=132592925">Link to Data Source</a><br />Information contained on this website may not by current, is not subject to verification, and is intended for
+        informational purposes only.
     </font>
-    <p>Information contained on this website may not by current, is not subject to verification, and is intended for informational purposes only.</p>
 
     <script>
         var colors = {
@@ -67,7 +67,7 @@
             'aqua': '#00a19a',
             'fallback': '#71727a'
         };
-        d3.json("product.json", function(error, json) {
+        d3.json("https://script.googleusercontent.com/a/macros/basecampcodingacademy.org/echo?user_content_key=VF97iSFqU3QUANnaEDW93eHZCh1tI53KBQVAzQVwyGm-PT2nkbFzw-RJfk3qhvxxqlsf_GPjS3TWU1QdRy18dbNu_7jTOfX9OJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKDvdOZU1Hr4vKVTW8HAQD13z7f08_DAQqYUGtPXrRW-udkXJ45ThkfSv99-Rb7eyFi6JtHY1JjA6CJlMURo_HqKfcuCDo9le5Co4Xfldri3q5Wz7dbb6W3QPnFB5ZCAoJ0ZsYpVSqM0yKYw5yaU1GvewgpMm5_9y-k_2P_IoVoT6CKDZ9Le6zjMWpVjkKG-1ns&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva", function(error, json) {
             var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
             chart
                 .name(label)
